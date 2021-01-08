@@ -52,7 +52,7 @@ For opening GUI of OEM BMW Infotaimentsystem:
 - do Double press MENU-Key of Bordscreen<br>
   <img src="Pics/Gui/00_Menu_ani.png" width="250"><br>
 - do Double press BC-Key of MID<br>
-  [<img src="http://img.youtube.com/vi/MwADx_9ggWE/0.jpg" width="250">](https://www.youtube.com/watch?v=MwADx_9ggWE "AVR-IBus Configuration on MID E39")  
+  [<img src="http://img.youtube.com/vi/R0ln4EWvLRM/0.jpg" width="250">](https://www.youtube.com/watch?v=R0ln4EWvLRM "AVR-IBus Settings Menu on E39 MID")  
   (check the video)
 
 ## Serial Communication 
