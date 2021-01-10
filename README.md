@@ -1,10 +1,11 @@
-# AVR-IBus<br>`Do-It-Yourself Modul for BMW Cars with I/K-Bus`
+# AVR-IBus<br>`Do-It-Yourself Modul for BMW Cars with I-/K-Bus`
 
 ## Modes
 - **AVR Mode**
 	- standalone modul with GUI for OEM System
 - **IBus Interface Mode**
-	- because my project is pioneer and initiator for [I-BUS App](www.ibus-app.de) own next IBus Interface, but you can use the DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
+	- because my project is pioneer and initiator for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interface 
+	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
 	- upload the other Firmware to get it working
 	- hope i will get more Support for the functionality with the App
 
@@ -57,6 +58,9 @@ For opening GUI of OEM BMW Infotaimentsystem:
 
 ## Serial Communication 
 ### Port-Settings
+<details>
+	<summary>show</summary>
+	
 |            |     AVR Mode     |     IBus Mode     |
 | ---------- | ---------------- | ----------------- |
 |Baud:       | `38400`          | `9600`            |
@@ -64,8 +68,11 @@ For opening GUI of OEM BMW Infotaimentsystem:
 |Parity:     | `None`           | `Even`            |
 |StopBits:   | `1`              | `1`               |
 |Handshaking:| `None`           | `None`            |
+</details>
 
 ### Settings / Serial-Protocol-Commands
+<details>
+	<summary>show</summary>
 
 | No | Setting / Command (Default) |    Value A   |    Value B   | Description |
 | -- | --------------------------- | ------------ | ------------ | ---------------------------------- |
@@ -118,15 +125,19 @@ For opening GUI of OEM BMW Infotaimentsystem:
 | Setting / Command |    Value A   |    Value B   |    Value C   |    Value D   | Description |
 | ----------------- | ------------ | ------------ | ------------ | ------------ | ----------- |
 |SET:A:SEQ:B:C:D|WEL=Welcome<br>LEV=Leaving<br>FOL=Follow Home<br>F2P=Flash to pass||||Set Light Sequenzes (use Excel Tool to generate the command)<br>It's not possible to set Light Sequenzes in OEM Gui, only enabling or disabling. For Creating, uploading and simulating of Sequenzes use the Excel Macro helper tool.<br>**A** Event<br>**B** Sequenz Number<br>**C** Lights as Integer<br>**D** Duration Time (1 = 0,1s)|
+</details>	    
 
 ### IBus MSGs for IBus Interface Mode
+<details>
+	<summary>show</summary>
+
 SRC or Dst
 FB is config device
 FA is AVR IBUS device
 
-**CMD**
-08 read setting
-09 write setting
+**CMD**<br>
+08 read setting<br>
+09 write setting<br>
 0C control (00 reset Settings, 01 set ntsc high or low)<br>
 **Example:**<br>
 `FB LL FA 08 01 CK` - read setting CDC_EMU<br>
@@ -134,11 +145,11 @@ FA is AVR IBUS device
 
 `FB 05 FA 09 05 03 0B` Mirror Fold IN+OUT<br>
 `FB 05 FA 09 05 00 08` Mirror Fold OFF<br>
-
+</details>
 
 ## Setup for Raspberry
 <details>
-	<summary>expand</summary>    
+	<summary>show</summary>    
 
 - add to config.txt
   - ```dtoverlay=pi3-miniuart-bt``` to get GPIO Serialport working
@@ -154,7 +165,7 @@ FA is AVR IBUS device
 
 ## Development Steps for RaspPi Shield
 <details>
-	<summary>expand</summary>
+	<summary>show</summary>
 
 - Breadboard<br>
   <img src="Pics/RaspPi/00_Breadboard.jpeg" width="250"><p>
