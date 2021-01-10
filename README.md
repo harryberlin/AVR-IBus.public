@@ -3,10 +3,10 @@
 ## Modes
 - **AVR Mode**
 	- Raspberry Shield or standalone modul with GUI for OEM System
-- **IBus Interface Mode**
-	- because my project is pioneer and initiator for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interface 
+- **IBus Interface Mode**	
 	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
 	- upload the other Firmware to get it working
+	- because my project is pioneer and initiator for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interface 
 	- hope i will get more Support for the functionality with the App
 
 ## Features
