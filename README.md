@@ -73,7 +73,8 @@ For opening GUI of OEM BMW Infotaimentsystem:
 ### Settings / Serial-Protocol-Commands
 <details>
 	<summary>show</summary>
-**Terminate the Commands with CR (Carrige Return).**
+	
+Terminate the Commands with **CR (Carrige Return).**<br>
 	
 | No | Setting / Command (Default) |    Value A   |    Value B   | Description |
 | -- | --------------------------- | ------------ | ------------ | ---------------------------------- |
