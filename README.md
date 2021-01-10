@@ -47,6 +47,9 @@
 ## Next Steps / ToDo
 - Extension for Bluetooth A2DP Audio Streaming
 - finish Android App for Configuration
+- Request RLS for Welcome/Leaving
+- may modify RCam-Control for other Solutions (e.g. Coolant Thermostat)
+
 
 ## Userinterface in the Car
 For opening GUI of OEM BMW Infotaimentsystem:
