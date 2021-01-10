@@ -2,7 +2,7 @@
 
 ## Modes
 - **AVR Mode**
-	- standalone modul with GUI for OEM System
+	- Raspberry Shield or standalone modul with GUI for OEM System
 - **IBus Interface Mode**
 	- because my project is pioneer and initiator for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interface 
 	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
@@ -73,7 +73,8 @@ For opening GUI of OEM BMW Infotaimentsystem:
 ### Settings / Serial-Protocol-Commands
 <details>
 	<summary>show</summary>
-
+**Terminate the Commands with CR (Carrige Return).**
+	
 | No | Setting / Command (Default) |    Value A   |    Value B   | Description |
 | -- | --------------------------- | ------------ | ------------ | ---------------------------------- |
 |    | `TX:IBUSMESSAGE` |||Send IBus Message to the Car. Length and/or Checksum are not requiered (example: TX:68LL18380000CK CD StateRequest)|
