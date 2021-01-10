@@ -77,7 +77,7 @@ For opening GUI of OEM BMW Infotaimentsystem:
 <details>
 	<summary>show</summary>
 	
-Terminate the Commands with **CR (Carrige Return).**<br>
+<br>Terminate the Commands with **CR (Carrige Return).**<br>
 	
 | No | Setting / Command (Default) |    Value A   |    Value B   | Description |
 | -- | --------------------------- | ------------ | ------------ | ---------------------------------- |
