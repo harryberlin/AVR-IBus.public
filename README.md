@@ -1,12 +1,17 @@
 # AVR-IBus<br>`Do-It-Yourself Modul for BMW Cars with I-/K-Bus`
+## Kickstart Description
+In case of using the Raspberry in the car, there was a topic about the powersuply and long bootup time.
+Inspired by other Interfaces like pibus, Intravee, eLight, modLight i decided to develop a specific shield.
+After some time and some requestes the standalone modul was born.
 
 ## Modes
 - **AVR Mode**
 	- Raspberry Shield or standalone modul with GUI for OEM System
+	- Using OSMC or LibreElec with the Addon [IBusCommunicaor](https://www.bmwraspcontrol.de/board/showthread.php?tid=295) for Kodi
 - **IBus Interface Mode**	
 	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
 	- upload the other Firmware to get it working
-	- because my project is pioneer and initiator for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interface 
+	- because my project is one of the pioneers for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interfac	
 	- hope i will get more Support for the functionality with the App
 
 ## Features
@@ -42,13 +47,14 @@
 ## Versions
 - [x] V1 RaspPi - Shield for Raspberry Pi
 - [x] V2 Basic - Standalone Modul
-- [ ] V2 RaspPi - Shield for Raspberry Pi (under construction)
+- [x] V2 RaspPi - Shield for Raspberry Pi (under construction)
 
 ## Next Steps / ToDo
 - Extension for Bluetooth A2DP Audio Streaming
 - finish Android App for Configuration
 - Request RLS for Welcome/Leaving
 - may modify RCam-Control for other Solutions (e.g. Coolant Thermostat)
+- Code crossplatform Configuraton Tool
 
 
 ## Userinterface in the Car
