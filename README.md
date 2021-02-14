@@ -7,7 +7,7 @@ After some time and some requestes the standalone modul was born.
 ## Modes
 - **AVR Mode**
 	- Raspberry Shield or standalone modul with GUI for OEM System
-	- Using OSMC or LibreElec with the Addon [IBusCommunicaor](https://www.bmwraspcontrol.de/board/showthread.php?tid=295) for Kodi
+	- Using OSMC or LibreElec with the Addon [IBusCommunicator](https://www.bmwraspcontrol.de/board/showthread.php?tid=295) for Kodi
 - **IBus Interface Mode**	
 	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
 	- upload the other Firmware to get it working
@@ -34,7 +34,7 @@ After some time and some requestes the standalone modul was born.
 - Auto-Relock for Central Lock after Unlock and no door was opened
 - Auto-Zoom for Navigation Map by Speed
 - PDC Display at E39 IKE High *
-- OBC-Value Display at E39 IKE High [Coolanttemp, Speed oder Oiltemp] (**under construction**)
+- OBC-Value Display at E39 IKE High [Coolanttemp, Speed, Oiltemp or Voltage] (**under construction**)
 - RearCam power control and enable Video input at TV-Modul
 - Configuration Options:
 	- Menu for Bordscreen
@@ -47,7 +47,7 @@ After some time and some requestes the standalone modul was born.
 ## Versions
 - [x] V1 RaspPi - Shield for Raspberry Pi
 - [x] V2 Basic - Standalone Modul
-- [x] V2 RaspPi - Shield for Raspberry Pi (under construction)
+- [x] V2 RaspPi - Shield for Raspberry Pi
 
 ## Next Steps / ToDo
 - Extension for Bluetooth A2DP Audio Streaming
