@@ -203,4 +203,9 @@ used Librarys:
 All mentioned brands and trademarks (e.g. product and company names) belong to their respective owners.
 
 ## Disclaimer
-Use of the hardware / software is at your own risk.  In the unlikely event that it comes to malfunction, personal injury or property damage, no liability is assumed.  Some functions may not be allowed on public roads!				
+Use of the hardware / software is at your own risk.  In the unlikely event that it comes to malfunction, personal injury or property damage, no liability is assumed.  Some functions may not be allowed on public roads!
+
+## Donation
+If you like my project and want to support me, feel free for a donation.
+[<img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif">](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KYAHYEJRUK4PN)
+
