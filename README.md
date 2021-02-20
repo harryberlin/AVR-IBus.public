@@ -50,11 +50,17 @@ After some time and some requestes the standalone modul was born.
 - [x] V2 RaspPi - Shield for Raspberry Pi
 
 ## Next Steps / ToDo
-- Extension for Bluetooth A2DP Audio Streaming
+- Extension for Bluetooth A2DP Audio Streaming (only for Basic)
 - finish Android App for Configuration
 - Request RLS for Welcome/Leaving
 - may modify RCam-Control for other Solutions (e.g. Coolant Thermostat)
 - Code crossplatform Configuraton Tool
+- Feature Requests:
+	- unfold Mirrors by double press Open on Remote
+	- unfold Mirrors by Door opening
+	- unfold Mirrors by Ingintion Position 2 
+	- fold Mirrors by double press Close on Remote
+	- fold Mirrors by hold Close on Remote
 
 
 ## Userinterface in the Car
@@ -206,6 +212,6 @@ All mentioned brands and trademarks (e.g. product and company names) belong to t
 Use of the hardware / software is at your own risk.  In the unlikely event that it comes to malfunction, personal injury or property damage, no liability is assumed.  Some functions may not be allowed on public roads!
 
 ## Donation
-If you like my project and want to support me, feel free for a donation.
+If you like my project and want to support me, feel free for a donation.<br>
 [<img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif">](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KYAHYEJRUK4PN)
 
