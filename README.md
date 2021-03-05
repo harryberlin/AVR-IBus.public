@@ -40,7 +40,6 @@ After some time and some requestes the standalone modul was born.
 	- Menu for Bordscreen
 	- Menu for MID (**under construction**) *
 	- Serial-Protocol [(see Describtion below)](https://github.com/harryberlin/AVR-IBus.public#serial-communiton-portsettings)
-	- Bluetooth-Serial-Protocol in progress (App is in progress) *
 
 *only V2
 
