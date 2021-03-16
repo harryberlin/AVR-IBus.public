@@ -49,6 +49,7 @@ After some time and some requestes the standalone modul was born.
 - [x] V2 Basic - Standalone Modul
   <br><img src="Pics/Basic/00_Basic.jpg" width="350"> <img src="Pics/Basic/02_Basic.jpg" width="350"><br>
 - [x] V2 RaspPi - Shield for Raspberry Pi
+  <br><img src="Pics/RaspPi/18_RaspPi_DAC_V2.9.jpg" width="350"> <img src="Pics/RaspPi/19_RaspPi_DAC_V2.9.jpg" width="350"><br>
 
 ## Next Steps / ToDo
 - Extension for Bluetooth A2DP Audio Streaming (only for Basic)
