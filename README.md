@@ -46,10 +46,10 @@ After some time and some requestes the standalone modul was born.
 ## Versions
 - [x] V1 RaspPi - Shield for Raspberry Pi
   <br><img src="Pics/RaspPi/17_RaspPi_DAC_RCAM.jpg" width="350"> <img src="Pics/RaspPi/16_RaspPi_DAC_RCAM.jpg" width="350"><br>
-- [x] V2 Basic - Standalone Modul
-  <br><img src="Pics/Basic/00_Basic.jpg" width="350"> <img src="Pics/Basic/02_Basic.jpg" width="350"><br>
 - [x] V2 RaspPi - Shield for Raspberry Pi
   <br><img src="Pics/RaspPi/18_RaspPi_DAC_V2.9.jpg" width="350"> <img src="Pics/RaspPi/19_RaspPi_DAC_V2.9.jpg" width="350"><br>
+- [x] V2 Basic - Standalone Modul
+  <br><img src="Pics/Basic/00_Basic.jpg" width="350"> <img src="Pics/Basic/02_Basic.jpg" width="350"><br>
 
 ## Next Steps / ToDo
 - Extension for Bluetooth A2DP Audio Streaming (only for Basic)
@@ -116,7 +116,7 @@ For opening GUI of OEM BMW Infotaimentsystem:
 | 04 | `SET:LEV:LIGHT:15`| 0=OFF<br>1-255 Seconds | | Leaving Light Duration in Seconds |
 | 05 | `SET:MIR_FOLD:0`| 0=OFF<br>1=Fold<br>2=Unfold<br>3=Both | | Enable/Disable MirrorFolding for Welcome/Leaving |
 | 06 | `SET:LIGHT:SEN_VAL:40`| 0-254=Value<br>255=OFF | | Enable/Disable Brightness Sensor for Welcome/Leaving Light.<br>Value for Comparing the Sensor. Lower Value needs<br>more darkness to turn on the Lights. Good Value range is 30 - 40. |
-| 07 | `SET:F2P:0`| 0=OFF<br>1=Low Beam<br>2=Fog Front<br>3=Both | | Enable/Disable Flash to Pass. Enabled Lights will turn on the by High Beam |
+| 07 | `SET:F2P:0`| 0=OFF<br>1=Low Beam<br>2=Fog Front<br>3=Both<br>4=Sequenz * | | Enable/Disable Flash to Pass. Enabled Lights will turn on the by High Beam |
 | 08 | `SET:LIGHT:PARK:3`| Bits:<br>0=Front<br>1=Back<br>2=Back (Inside) | | Enable/Disable Park Lights for Welcome/Leaving Light.<br>Bitmask (76543210) to Integer |
 | 10 | `SET:LIGHT:BEAM:0`| Bits:<br>0=Low<br>1=High | | Enable/Disable Beam Lights for Welcome/Leaving Light.<br>Bitmask (76543210) to Integer |
 | 13 | `SET:LIGHT:TURN:0`| Bits:<br>0=Front<br>1=Back<>2=Side | | Enable/Disable Direction Lights for Welcome/Leaving Light.<br>Some old build year can't use "Side" alone<br>Bitmask (76543210) to Integer |
