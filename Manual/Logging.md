@@ -25,6 +25,6 @@ You should Download the Version 1.93b_20130116, because the current has a bug by
 
 10. Go to logfile path and copy the logfile to E-Mail or what ever you want.
 
-<img src="Pics/Misc/Logging_Terminal_01.png">
+<img src="https://raw.githubusercontent.com/harryberlin/AVR-IBus.public/master/Pics/Misc/Logging_Terminal_01.png"  width="450">
 
 
