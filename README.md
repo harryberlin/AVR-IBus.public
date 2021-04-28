@@ -111,7 +111,7 @@ For opening GUI of OEM BMW Infotaimentsystem:
 |    |             |               | |                                             |
 | 01 | `SET:CDC_EMU:1`| 0=OFF<br>1=ON | | Enable/Disable CD Changer Emulation<br>to get Radio Mode CD-Changer<br>as Input Source |
 | 16 | `SET:WEL:MSG:0`| 0=OFF<br>1=ON | | Enable/Disable Welcome Message at IKE<br>Display after unlocking<br>the Car |
-| 40-59 | `SET:WEL:MSG_T:AVR~IBus`| 0=OFF<br>1=ON | | Set Text for Welcome Message. 20 chars |
+| 40-59 | `SET:WEL:MSG_T:AVR~IBus`| | | Set Text for Welcome Message. 20 chars |
 | 02<br>03 | `SET:WEL:LIGHT:45:0`| 0=OFF<br>1-255 Seconds | Bits:<br>0=Start Engine<br>1=Insert Key<br>2=Open Door<br>4=Ignition Acc (Pos 1) | **A** Welcome Light Duration in Seconds<br>**B** Event to Cancel the Welcome Light. Bitmask (76543210) to Integer |
 | 04 | `SET:LEV:LIGHT:15`| 0=OFF<br>1-255 Seconds | | Leaving Light Duration in Seconds |
 | 05 | `SET:MIR_FOLD:0`| 0=OFF<br>1=Fold<br>2=Unfold<br>3=Both | | Enable/Disable MirrorFolding for Welcome/Leaving |
@@ -138,7 +138,8 @@ For opening GUI of OEM BMW Infotaimentsystem:
 | 30 | `SET:BFD:0`| 0=OFF<br>1-7=Seconds | | Enable Flashing Rear Turnlights for Emergency Brake.<br>Delaytime for flashing after BFD turned off in Seconds. (IKE Coding requiered)<br>// IKE & KOM (beginning Manufäcturing Year 2001, better 09/2001) //<br>BRAKE_FORCE<br>    aktiv<br>BRAKE_FORCE_2<br>    aktiv<br>ASC3_AUSWERTUNG<br>    aktiv<br>BFD_AX_REF_SCHWELLE<br>    wert_01<br>BFD_AX_REF_SCHWELLE_2<br>    wert_01 |
 | 32<br>33 | `SET:RCAM:0:15`| 0=OFF<br>1-255km/h | 15s | **A**  Enable/Disable RCam Switch. Speedlimit for turning off RCam.<br>**B** Timeout for turning off RCam in Seconds. |
 | 36 | `SET:NAVZ:0`| 0=OFF<br>1=ON | | Enable/Disable AutoZoom for Navigation Map. |
-
+| 37 | `SET:PDCSCR:0`| 0=OFF<br>1=Front+Back<br>2=Back | | Enable/Disable PDC Values to IKE High Display and PDC Type. |
+| 38 | `SET:REQS:255`| Bits:<br>0=GM State<br>1=LCM Dim | | Enable (Bit to 1)/Disable (Bit to 0) Request Messages. In some Cases the IKE will stop showing Indicator LEDs.<br>Bitmask (76543210) to Integer |
 
 
 | Setting / Command |    Value A   |    Value B   |    Value C   |    Value D   | Description |
