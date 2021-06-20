@@ -81,7 +81,13 @@ import platform
 import datetime
 import logging
 import struct
-import numpy
+
+try:
+    import numpy
+except ImportError:
+    install_package("numpy")
+    import numpy
+
 from functools import partial
 
 from threading import Thread
@@ -654,8 +660,8 @@ MEM_PARTS_2560 = {
     }
 }
 
-DEBUG = False
 
+DEBUG = False
 try:
     with open(os.path.join(APP_PATH, "DEBUG")) as f:
         DEBUG = True
