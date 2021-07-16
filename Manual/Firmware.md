@@ -6,7 +6,7 @@ Use the Application from [Tools Section](https://github.com/harryberlin/AVR-IBus
 **Where to get Firmware Files**
 Use the Application from [Firmware Section](https://github.com/harryberlin/AVR-IBus.public/tree/master/Firmware/).
 
-**Steps to create Log File**
+**Steps to upload Firmware**
 1. Select the Serial/COM Port of AVR-IBus Device
 
 2. Click Open Button to start Connection.

@@ -112,14 +112,14 @@ For opening GUI of OEM BMW Infotaimentsystem:
 | 01 | `SET:CDC_EMU:1`| 0=OFF<br>1=ON | | Enable/Disable CD Changer Emulation<br>to get Radio Mode CD-Changer<br>as Input Source |
 | 16 | `SET:WEL:MSG:0`| 0=OFF<br>1=ON | | Enable/Disable Welcome Message at IKE<br>Display after unlocking<br>the Car |
 | 40-59 | `SET:WEL:MSG_T:AVR~IBus`| | | Set Text for Welcome Message. 20 chars |
-| 02<br>03 | `SET:WEL:LIGHT:45:0`| 0=OFF<br>1-255 Seconds | Bits:<br>0=Start Engine<br>1=Insert Key<br>2=Open Door<br>4=Ignition Acc (Pos 1) | **A** Welcome Light Duration in Seconds<br>**B** Event to Cancel the Welcome Light. Bitmask (76543210) to Integer |
+| 02<br>03 | `SET:WEL:LIGHT:45:0`| 0=OFF<br>1-255 Seconds | Bits:<br>0=Start Engine<br>1=Insert Key<br>2=Open Door<br>4=Ignition Acc (Pos 1) | **A** Welcome Light Duration in Seconds<br>**B** Event to Cancel the Welcome Light. Bitmask (76543210) to Integer. |
 | 04 | `SET:LEV:LIGHT:15`| 0=OFF<br>1-255 Seconds | | Leaving Light Duration in Seconds |
-| 05 | `SET:MIR_FOLD:0`| 0=OFF<br>1=Fold<br>2=Unfold<br>3=Both | | Enable/Disable MirrorFolding for Welcome/Leaving |
+| 05 | `SET:MIR_FOLD:0`| Bits for Folding & Event:<br>0=In Leaving<br>1=Out Welcome<br>2=In Ign Off<br>3=Out IgnOn<br>4=In FFB Double<br>5=Out FFB Double<br>6=In FFB Hold<br>7=Out Open Door | | Enable/Disable MirrorFolding for Events. Bitmask (76543210) to Integer. |
 | 06 | `SET:LIGHT:SEN_VAL:40`| 0-254=Value<br>255=OFF | | Enable/Disable Brightness Sensor for Welcome/Leaving Light.<br>Value for Comparing the Sensor. Lower Value needs<br>more darkness to turn on the Lights. Good Value range is 30 - 40. |
 | 07 | `SET:F2P:0`| 0=OFF<br>1=Low Beam<br>2=Fog Front<br>3=Both<br>4=Sequenz * | | Enable/Disable Flash to Pass. Enabled Lights will turn on the by High Beam |
 | 08 | `SET:LIGHT:PARK:3`| Bits:<br>0=Front<br>1=Back<br>2=Back (Inside) | | Enable/Disable Park Lights for Welcome/Leaving Light.<br>Bitmask (76543210) to Integer |
 | 10 | `SET:LIGHT:BEAM:0`| Bits:<br>0=Low<br>1=High | | Enable/Disable Beam Lights for Welcome/Leaving Light.<br>Bitmask (76543210) to Integer |
-| 13 | `SET:LIGHT:TURN:0`| Bits:<br>0=Front<br>1=Back<>2=Side | | Enable/Disable Direction Lights for Welcome/Leaving Light.<br>Some old build year can't use "Side" alone<br>Bitmask (76543210) to Integer |
+| 13 | `SET:LIGHT:TURN:0`| Bits:<br>0=Front<br>1=Back<br>2=Side | | Enable/Disable Direction Lights for Welcome/Leaving Light.<br>Some old build year can't use "Side" alone<br>Bitmask (76543210) to Integer |
 | 11 | `SET:LIGHT:OTHER:0`| Bits:<br>0=Fog Front<br>1=Licence<br>2=Reverse<br>3=Brake<br>4=Ambient<br>5=Fog Back | | Enable/Disable further Lights for Welcome/Leaving Light.<br>Bitmask (76543210) to Integer |
 | 17 | `SET:BLINK:3`| 0=OFF<br>2-10=Repeat | | Enable/Disable one touch Direction Signal (Comfortblink).<br>Set repeat interval. |
 | 18 | `SET:LOCK_SPD:0`| 0=OFF<br>1-255km/h | | Enable/Disable auto lock car by speed. |
