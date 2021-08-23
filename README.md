@@ -5,41 +5,50 @@ Inspired by other Interfaces like pibus, Intravee, eLight, modLight i decided to
 After some time and some requestes the standalone modul was born.
 
 ## Modes
-- **AVR Mode**
+- **AVR Mode** 
 	- Raspberry Shield or standalone modul with GUI for OEM System
 	- Using OSMC or LibreElec with the Addon [IBusCommunicator](https://www.bmwraspcontrol.de/board/showthread.php?tid=295) for Kodi
-- **IBus Interface Mode**	
+- **IBus Interface Mode** 
 	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
 	- upload the other Firmware to get it working
-	- because my project is one of the pioneers for [I-BUS App](www.ibus-app.de) to develop their own next IBus Interfac	
+	- because my project is one of the pioneers for [I-BUS App](www.ibus-app.de) to develop their own next IBus Modul
 	- hope i will get more Support for the functionality with the App
 
 ## Features
 - CD-Changer Emulation
 - Welcome Message on E39 IKE High
-- Welcome/Leaving Mirror Folding
 - Welcome/Leaving Light depended by Brightness
 - Lightsequenzes for: *
 	- Welcome
 	- Leaving
 	- Follow Home
 	- Flash2Pass
+- Mirror Folding
+	- unfold/fold for Welcome/Leaving
+	- fold Mirrors by Ingintion Position Off * 
+	- unfold Mirrors by Ingintion Position On * 
+	- unfold Mirrors by double press Open on Remote * 
+	- fold Mirrors by double press Close on Remote * 
+	- fold Mirrors by hold Close on Remote * 
+	- unfold/fold by Key insert or remove of Ignition Lock * 
+	- unfold Mirrors by Door opening * 
 - Flash to Pass
 - One Touch direction signal
 - Fog Corner Lights for E39
 - Day Running Light
 - Aux-Heating control by Remote Key
-- Brake Force Display (Coding of IKE requiered) *
+- Brake Force Display (Coding of IKE requiered) * 
 - Convertible Roof Control for E46 by Remote Key
 - Auto-Relock for Central Lock after Unlock and no door was opened
 - Auto-Zoom for Navigation Map by Speed
-- PDC Display at E39 IKE High *
+- PDC Display at E39 IKE High * 
 - OBC-Value Display at E39 IKE High [Coolanttemp, Speed, Oiltemp or Voltage] (**under construction**)
 - RearCam power control and enable Video input at TV-Modul
 - Configuration Options:
 	- Menu for Bordscreen
-	- Menu for MID (**under construction**) *
+	- Menu for MID (**under construction**) * 
 	- Serial-Protocol [(see Describtion below)](https://github.com/harryberlin/AVR-IBus.public#serial-communiton-portsettings)
+- Cross platform Configuraton Tool (Windows, Linux, Mac)
 
 *only V2
 
@@ -56,13 +65,8 @@ After some time and some requestes the standalone modul was born.
 - finish Android App for Configuration
 - Request RLS for Welcome/Leaving
 - may modify RCam-Control for other Solutions (e.g. Coolant Thermostat)
-- Code crossplatform Configuraton Tool
 - Feature Requests:
-	- unfold Mirrors by double press Open on Remote
-	- unfold Mirrors by Door opening
-	- unfold Mirrors by Ingintion Position 2 
-	- fold Mirrors by double press Close on Remote
-	- fold Mirrors by hold Close on Remote
+	- Move down Mirror for Parking
 
 
 ## Userinterface in the Car
@@ -114,7 +118,7 @@ For opening GUI of OEM BMW Infotaimentsystem:
 | 40-59 | `SET:WEL:MSG_T:AVR~IBus`| | | Set Text for Welcome Message. 20 chars |
 | 02<br>03 | `SET:WEL:LIGHT:45:0`| 0=OFF<br>1-255 Seconds | Bits:<br>0=Start Engine<br>1=Insert Key<br>2=Open Door<br>4=Ignition Acc (Pos 1) | **A** Welcome Light Duration in Seconds<br>**B** Event to Cancel the Welcome Light. Bitmask (76543210) to Integer. |
 | 04 | `SET:LEV:LIGHT:15`| 0=OFF<br>1-255 Seconds | | Leaving Light Duration in Seconds |
-| 05 | `SET:MIR_FOLD:0`| Bits for Folding & Event:<br>0=In Leaving<br>1=Out Welcome<br>2=In Ign Off<br>3=Out IgnOn<br>4=In FFB Double<br>5=Out FFB Double<br>6=In FFB Hold<br>7=Out Open Door | | Enable/Disable MirrorFolding for Events. Bitmask (76543210) to Integer. |
+| 05<br>09 | `SET:MIR_FOLD:0`| Bits for Folding & Event:<br>0=In Leaving<br>1=Out Welcome<br>2=In Ign Off *<br>3=Out IgnOn *<br>4=In FFB Double *<br>5=Out FFB Double *<br>6=In FFB Hold *<br>7=Out Open Door * | Bits for Folding & Event:<br>8=Key remove *<br>9=Key insert *<br>10=Engine Start * | Enable/Disable MirrorFolding for Events. Bitmask (109876543210) to Integer. |
 | 06 | `SET:LIGHT:SEN_VAL:40`| 0-254=Value<br>255=OFF | | Enable/Disable Brightness Sensor for Welcome/Leaving Light.<br>Value for Comparing the Sensor. Lower Value needs<br>more darkness to turn on the Lights. Good Value range is 30 - 40. |
 | 07 | `SET:F2P:0`| 0=OFF<br>1=Low Beam<br>2=Fog Front<br>3=Both<br>4=Sequenz * | | Enable/Disable Flash to Pass. Enabled Lights will turn on the by High Beam |
 | 08 | `SET:LIGHT:PARK:3`| Bits:<br>0=Front<br>1=Back<br>2=Back (Inside) | | Enable/Disable Park Lights for Welcome/Leaving Light.<br>Bitmask (76543210) to Integer |
@@ -126,7 +130,6 @@ For opening GUI of OEM BMW Infotaimentsystem:
 | 31 | `SET:UNLOCK:1`| Bits:<br>0=Door<br>1=Handbrake<br>2=Gear Position P<br>3=Ignition Engine off | | If Setting auto lock is enabled, do auto unlock the car by events.<br>Bitmask (76543210) to Integer |
 | 35 | `SET:RELOCK:0`| 0=OFF<br>1-255min | | Enable/Disable auto relock the car after unlocking and no door was opened.<br>Minutes for auto relock (open Trunk restarts the Countdown)<br>(!! BE CAREFUL IF YOU PLACE YOUR KEY INSIDE THE CAR !!)|
 | 20 | `SET:RXTX:0`| 0=RX<br>1=TX | | Enable/Disable received and transmitted IBus Messages.<br>Bitmask (76543210) to Integer |
-| 34 | `SET:RXTX:MS:12`| 12-255ms | | Break between transmitted messages (don't use smaller than 10). |
 | 19<br>21 | `SET:FOG_TURN:60:3`| 0-255km/h | 0=OFF<br>1-255s | **A** Speed Range to trigger the Event.<br>**B** Enable/Disable Fog Corner Lights for E39.<br>Seconds Delaytime for Fog Turn Light.Event is triggerd by Direction signal and park lights must be on.<br>If you reach the Speed or time is over, corner light will turn off. |
 | 22 | `SET:DRL:0`| Bits:<br>0=Parklight<br>1=Fog Front<br>2=Taillight | | Enable/Disable Day Running Light at Ignition Pos 2 and Lights Off.<br>Bitmask (76543210) to Integer |
 | 23 | `SET:NTWC:0`| 0=E39<br>1=E52<br>2=E46<br>3=R40<br>4=RR01<br>5=E83<br>6=R50<br>7=R55<br>8=E65 | | Define Network Vehicle Type.<br>Will be set automaticly. |
