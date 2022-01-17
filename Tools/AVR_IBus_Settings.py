@@ -5792,34 +5792,57 @@ class App(tk.Tk):
             "Dritte_Bremsleuchte": 0b00000000000000000000000000000001,
 
         }
-        
+
+        file_name = filedialog.askopenfilename(title="I-Bus App Lightsequenz load", filetypes = (("I-Bus App Lightsequenz","*.xml"),))
+        if file_name == "":
+            return
+
         event = ["WEL", "LEV", "FOL", "F2P"]
-        event_index = self.ask("Please Choose Event:", ("Welcome","Leaving","Follow","F2P", "Cancel"))
+        event_index = self.ask("Please Choose Event:", ("Welcome", "Leaving", "Follow", "F2P", "Cancel"))
         if event_index == 4:
             return
 
-        file_name = filedialog.askopenfilename(title="I-Bus App Lightsequenz load", filetypes = (("I-Bus App Lightsequenz","*.xml"),))
         debug_print("%s|%s" % (file_name, event[event_index]))
-
-        if file_name == "":
-            return
 
         lightlist = ET.parse("{FILE}".format(FILE=file_name)).getroot()
 
         output = ""
         for sequenz in lightlist.iterfind("sequenz"):
-            seq_pos = int(sequenz.get("position")) + 1
 
-            for lights in sequenz.iterfind("lights"):
-                light_num = 0
+            try:
+                seq_pos = int(sequenz.get("position")) + 1
+            except TypeError:
+                seq_pos = int(sequenz.get("Position")) + 1
+
+
+
+            if sequenz.find("lights") is not None:
+                lights_string = "lights"
+            if sequenz.find("Lights") is not None:
+                lights_string = "Lights"
+
+            light_num = 0
+            for lights in sequenz.iterfind(lights_string):
 
                 for line in lights.text.split("\n"):
                     #print(line)
                     if line.strip() != "":
-                        light_num |= light_mask[line.strip()]
+                        try:
+                            light_num |= light_mask[line.strip()]
+                        except KeyError:
+                            pass
 
-            for timer in sequenz.iterfind("timer"):
+            seq_time = 0
+            if sequenz.find("timer") is not None:
+                timer_string = "timer"
+            if sequenz.find("Timer") is not None:
+                timer_string = "Timer"
+
+            for timer in sequenz.iterfind(timer_string):
                 seq_time = int(timer.text.strip()) / 100
+                seq_time = int(seq_time)
+
+
 
             if self.avr_mode.get() == 0:
                 output = output + "SET:{EVENT}:SEQ:{POSITION}:{LIGHTS}:{TIME}\n".format(EVENT=event[event_index], POSITION=seq_pos, LIGHTS=light_num, TIME=int(seq_time))
