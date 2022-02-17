@@ -83,10 +83,17 @@ import logging
 import struct
 
 try:
-    import numpy
+    import intelhex
 except ImportError:
-    install_package("numpy")
-    import numpy
+    install_package("intelhex")
+    import intelhex
+
+#try:
+#    import numpy
+#except ImportError:
+#    install_package("numpy")
+#    import numpy
+
 
 from functools import partial
 
@@ -5250,7 +5257,7 @@ class App(tk.Tk):
         if self.avr_mode.get() == 0:
             self.txtSend_set("SET:MIR_FOLD:%s" % value)
         else:
-            self.txtSend_set("FB LL FA 09 05 %02X CK\nFB LL FA 09 09 %02X CK" % (numpy.int8(value), value >> 8))
+            self.txtSend_set("FB LL FA 09 05 %02X CK\nFB LL FA 09 09 %02X CK" % ((value & 0x00FF), value >> 8))
 
     def tgMirFoldInLev_click(self):
         debug_print("AVR_IBus_Settings.tgMirFoldInLev_click")
@@ -6650,6 +6657,10 @@ class App(tk.Tk):
         self.lblFirmwareStatus.configure(text="%s" % text)
         self.lblFirmwareStatus.update_idletasks()
 
+    def firmware_importhex(self, data, buf):
+        ih = intelhex.IntelHex()
+        return ih.tobinarray()
+
     def firmware_ihex2b(self, data, buf):
         bufsize = len(buf)
         baseaddr = 0
@@ -6776,7 +6787,7 @@ class App(tk.Tk):
             Sync_CRC_EOP)
 
         if PY2:
-            debug_print("pkt %2X%2X%2X%2X" % (ord(pkt[0]), ord(pkt[1]), ord(pkt[2]), ord(pkt[3])))
+            debug_print("pkt %02X%02X%02X%02X" % (ord(pkt[0]), ord(pkt[1]), ord(pkt[2]), ord(pkt[3])))
         else:
             debug_print("pkt %2X%2X%2X%2X" % (pkt[0], pkt[1], pkt[2], pkt[3]))
         self.firmware_write(pkt)
@@ -6986,83 +6997,86 @@ class App(tk.Tk):
 
         self.event_queue.put((self.progressBar_set, (0, "Upload starting...", 0)))
 
-        try:
-            if self.firmware_file == "":
+        #try:
+        if self.firmware_file == "":
 
-                self.event_queue.put((self.progressBar_set, (0, "No Hex-File selected", 0)))
-                return
+            self.event_queue.put((self.progressBar_set, (0, "No Hex-File selected", 0)))
+            return
 
-            with open(self.firmware_file, "rb") as fd:
-                data = fd.read()
+        with open(self.firmware_file, "rb") as fd:
+            data = fd.read()
 
-            # check it"s an hex file
-            assert (len(data) >= 11)
+        # check it"s an hex file
+        assert (len(data) >= 11)
 
-            if PY2:
-                assert (data[0] == ":")
-            else:
-                assert (data[0] == ord(":"))
+        if PY2:
+            assert (data[0] == ":")
+        else:
+            assert (data[0] == ord(":"))
 
-            if not "#%s" % self.firmware_mem_part["signature"]["avr-ibus"] in bstr_to_ustr(data):
-                self.event_queue.put((self.progressBar_set, (0, "wrong file selected", 0)))
-                return
+        if not "#%s" % self.firmware_mem_part["signature"]["avr-ibus"] in bstr_to_ustr(data):
+            self.event_queue.put((self.progressBar_set, (0, "wrong file selected", 0)))
+            return
 
-            with open(self.firmware_file, "rb") as hex_file:
-                hex_file_temp = hex_file.read().decode("unicode_escape")
-                for line in hex_file_temp.split("\n"):
-                    if "#build:" in line:
-                        self.lblHexBuild_value.set(line[8:].strip())
+        with open(self.firmware_file, "rb") as hex_file:
+            hex_file_temp = hex_file.read().decode("unicode_escape")
+            for line in hex_file_temp.split("\n"):
+                if "#build:" in line:
+                    self.lblHexBuild_value.set(line[8:].strip())
 
-            memtype = "flash"
-            mem = self.firmware_mem_part[memtype]
-            assert (mem["paged"] == True)
-            assert (mem["pagesize"] != 0)
+        memtype = "flash"
+        mem = self.firmware_mem_part[memtype]
+        assert (mem["paged"] == True)
+        assert (mem["pagesize"] != 0)
 
-            # convert hex to binary stored in memory
-            buf = bytearray(mem["size"])
-            prog_size = self.firmware_ihex2b(data, buf)
-            """# print prog_size
-            # print buf
-            # print ("BUF:{}".format("".join(["{:02x}".format(x) for x in buf])).upper())
-            # flash the device
-            """
-            assert (mem["pagesize"] * mem["pagecount"] == mem["size"])
-            debug_print("Uploading: %s" % os.path.split(self.firmware_file)[1])
+        # convert hex to binary stored in memory
+        #buf = bytearray(mem["size"])
+        #prog_size = self.firmware_ihex2b(data, buf)
 
-            self.firmware_get_sync()
+        buf = bytearray(intelhex.IntelHex(self.firmware_file).tobinstr())
+        prog_size = len(buf)
+        """# print prog_size
+        # print buf
+        # print ("BUF:{}".format("".join(["{:02x}".format(x) for x in buf])).upper())
+        # flash the device
+        """
+        assert (mem["pagesize"] * mem["pagecount"] == mem["size"])
+        debug_print("Uploading: %s" % os.path.split(self.firmware_file)[1])
 
-            self.event_queue.put((self.progressBar_set, (0, "Flashing...", 0)))
-            self.btnUpdateOff.configure(state="disabled")
+        self.firmware_get_sync()
 
-            self.serial.timeout = 0.3
+        self.event_queue.put((self.progressBar_set, (0, "Flashing...", 0)))
+        self.btnUpdateOff.configure(state="disabled")
 
-            for addr in range(0, mem["size"], mem["pagesize"]):
-                if addr > prog_size:
-                    break
-                page = buf[addr:addr + mem["pagesize"]]
+        self.serial.timeout = 0.3
 
-                self.firmware_load_addr(addr)
-                self.firmware_prog_page(memtype, page, verify=True)
+        for addr in range(0, mem["size"], mem["pagesize"]):
+            if addr > prog_size:
+                break
+            page = buf[addr:addr + mem["pagesize"]]
 
-                percent_max = int(prog_size / mem["pagesize"])
-                percent_cur = int(addr / mem["pagesize"])
-                percent_val = int(percent_cur * 100 / percent_max * 100 / 100)
-                #self.progressBar_set(percent_cur, percent_max, 0)
-                self.event_queue.put((self.progressBar_set, (percent_val, "Flashing...", 0)))
+            self.firmware_load_addr(addr)
+            self.firmware_prog_page(memtype, page, verify=True)
+
+            percent_max = int(prog_size / mem["pagesize"])
+            percent_cur = int(addr / mem["pagesize"])
+            percent_val = int(percent_cur * 100 / percent_max * 100 / 100)
+            #self.progressBar_set(percent_cur, percent_max, 0)
+            self.event_queue.put((self.progressBar_set, (percent_val, "Flashing...", 0)))
 
 
-            self.event_queue.put((self.btnUpdateOff_doubleclick))
-            sleep(0.2)
-            self.event_queue.put((self.btnReset_click))
+        self.event_queue.put((self.btnUpdateOff_doubleclick))
+        sleep(0.2)
+        self.event_queue.put((self.btnReset_click))
 
-            #self.progressBar_set(0, percent_max, 0)
-            #self.firmwareStatus_set("Upload finished")
-            self.event_queue.put((self.progressBar_set, (0, "Upload finished", 0)))
+        #self.progressBar_set(0, percent_max, 0)
+        #self.firmwareStatus_set("Upload finished")
+        self.event_queue.put((self.progressBar_set, (0, "Upload finished", 0)))
 
-            self.event_queue.put((self.firmware_mode_off))
+        self.event_queue.put((self.firmware_mode_off))
 
-        except Exception:
-            self.event_queue.put((self.progressBar_set, (0, """Error during Upload. Try again.""", 0)))
+        #except Exception:
+        #    self.event_queue.put((self.progressBar_set, (0, """Error during Upload. Try again.""", 0)))
 
         self.btnUpload.configure(state="normal")
         #self.btnUpload.update_idletasks()
