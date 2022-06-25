@@ -70,6 +70,13 @@ After some time and some requestes the standalone modul was born.
 	- Features like LinBusBox/IBusBox
 
 
+## Simple Basic Schematics
+- V1.x
+<img src="Pics/Wiring/00_Schema_V1.png" border="1"><br>
+- V2.x
+<img src="Pics/Wiring/00_Schema_V2.png" border="1">
+
+
 ## Userinterface in the Car
 For opening GUI of OEM BMW Infotaimentsystem:
 - do Double press MENU-Key of Bordscreen<br>
