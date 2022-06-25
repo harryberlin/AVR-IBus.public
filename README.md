@@ -72,9 +72,14 @@ After some time and some requestes the standalone modul was born.
 
 ## Simple Basic Schematics
 - V1.x
-<img src="Pics/Wiring/00_Schema_V1.png" border="1"><br>
+<br><img src="Pics/Wiring/00_Schema_V1.png" border="1"><br>
+
 - V2.x
-<img src="Pics/Wiring/00_Schema_V2.png" border="1">
+<br><img src="Pics/Wiring/00_Schema_V2.png" border="1"><br>
+
+## PCB
+- V1.x
+<br><img src="Pics/PCB/AVR_IBus_RaspPi_V1.10_top.png" width="250"> <img src="Pics/PCB/AVR_IBus_RaspPi_V1.10_bottom.png" width="250"><br>
 
 
 ## Userinterface in the Car
