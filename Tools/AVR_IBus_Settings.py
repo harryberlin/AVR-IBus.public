@@ -116,7 +116,6 @@ except ImportError:
     from ttkthemes import THEMES
     from ttkthemes import ThemedStyle
 
-
 if PY2:
     import ConfigParser
 
@@ -7050,36 +7049,39 @@ class App(tk.Tk):
 
         self.serial.timeout = 0.3
 
-        for addr in range(0, mem["size"], mem["pagesize"]):
-            if addr > prog_size:
-                break
-            page = buf[addr:addr + mem["pagesize"]]
+        try:
+            for addr in range(0, mem["size"], mem["pagesize"]):
+                if addr > prog_size:
+                    break
+                page = buf[addr:addr + mem["pagesize"]]
 
-            self.firmware_load_addr(addr)
-            self.firmware_prog_page(memtype, page, verify=True)
+                self.firmware_load_addr(addr)
+                self.firmware_prog_page(memtype, page, verify=True)
 
-            percent_max = int(prog_size / mem["pagesize"])
-            percent_cur = int(addr / mem["pagesize"])
-            percent_val = int(percent_cur * 100 / percent_max * 100 / 100)
-            #self.progressBar_set(percent_cur, percent_max, 0)
-            self.event_queue.put((self.progressBar_set, (percent_val, "Flashing...", 0)))
+                percent_max = int(prog_size / mem["pagesize"])
+                percent_cur = int(addr / mem["pagesize"])
+                percent_val = int(percent_cur * 100 / percent_max * 100 / 100)
+                #self.progressBar_set(percent_cur, percent_max, 0)
+                self.event_queue.put((self.progressBar_set, (percent_val, "Flashing...", 0)))
 
 
-        self.event_queue.put((self.btnUpdateOff_doubleclick))
-        sleep(0.2)
-        self.event_queue.put((self.btnReset_click))
+            self.event_queue.put((self.btnUpdateOff_doubleclick))
+            sleep(0.2)
+            self.event_queue.put((self.btnReset_click))
 
-        #self.progressBar_set(0, percent_max, 0)
-        #self.firmwareStatus_set("Upload finished")
-        self.event_queue.put((self.progressBar_set, (0, "Upload finished", 0)))
+            #self.progressBar_set(0, percent_max, 0)
+            #self.firmwareStatus_set("Upload finished")
+            self.event_queue.put((self.progressBar_set, (0, "Upload finished", 0)))
+        except:
+            messagebox.showerror(title="Firmware upload", message="Error during upload! Try again.")
+        finally:
+            self.event_queue.put((self.firmware_mode_off))
 
-        self.event_queue.put((self.firmware_mode_off))
+            #except Exception:
+            #    self.event_queue.put((self.progressBar_set, (0, """Error during Upload. Try again.""", 0)))
 
-        #except Exception:
-        #    self.event_queue.put((self.progressBar_set, (0, """Error during Upload. Try again.""", 0)))
-
-        self.btnUpload.configure(state="normal")
-        #self.btnUpload.update_idletasks()
+            self.btnUpload.configure(state="normal")
+            #self.btnUpload.update_idletasks()
 
     def firmware_mode_on(self):
         self.firmware_mode = True
