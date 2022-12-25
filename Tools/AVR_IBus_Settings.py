@@ -2462,7 +2462,7 @@ class App(tk.Tk):
         self.Label2_1_3.configure(text="ms")
         """
 
-        self.spnNtwkMode = tk.Spinbox(self.tabSettings, from_=0.0, to=2.0)
+        self.spnNtwkMode = tk.Spinbox(self.tabSettings, from_=0.0, to=3.0)
         self.spnNtwkMode.place(x=165, y=40, height=24, width=45)
         self.spnNtwkMode.configure(activebackground="#f9f9f9")
         self.spnNtwkMode.configure(background="white")
@@ -5678,6 +5678,8 @@ class App(tk.Tk):
             self.lblNtwkMode.configure(text="""GM/0""")
         elif self.spnNtwkMode.get() == "2":
             self.lblNtwkMode.configure(text="""GM/1""")
+        elif self.spnNtwkMode.get() == "3":
+            self.lblNtwkMode.configure(text="""GM/2""")
 
     def spnRCamTime_click(self):
         debug_print("AVR_IBus_Settings.spnRCamTime_click")
@@ -6842,9 +6844,9 @@ class App(tk.Tk):
 
         temp_data = data
         if PY2:
-            temp_data[10] = " "
+            temp_data[0] = " "
         else:
-            temp_data[10] = 0x20
+            temp_data[0] = 0x20
         self.firmware_read_page(memtype, temp_data)
         debug_print("SENT:{}".format("".join(["{:02X}".format(x) for x in data])))
         debug_print("READ:{}".format("".join(["{:02X}".format(x) for x in temp_data])))
@@ -7072,7 +7074,11 @@ class App(tk.Tk):
             #self.progressBar_set(0, percent_max, 0)
             #self.firmwareStatus_set("Upload finished")
             self.event_queue.put((self.progressBar_set, (0, "Upload finished", 0)))
-        except:
+        except Exception as e:
+            if PY2:
+                debug_print(e.message)
+            else:
+                debug_print(''.join(e.args))
             messagebox.showerror(title="Firmware upload", message="Error during upload! Try again.")
         finally:
             self.event_queue.put((self.firmware_mode_off))
@@ -7082,6 +7088,7 @@ class App(tk.Tk):
 
             self.btnUpload.configure(state="normal")
             #self.btnUpload.update_idletasks()
+
 
     def firmware_mode_on(self):
         self.firmware_mode = True
