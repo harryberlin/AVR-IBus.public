@@ -1,5 +1,6 @@
 # AVR-IBus <br> `DIY Modul for BMW Cars with I-/K-Bus`
 <img src="Pics/logo.png" border="0" height="60">
+<br>
 ## Kickstart Description
 In case of using the Raspberry in the car, there was a topic about the powersuply and long bootup time.
 Inspired by other Interfaces like pibus, Intravee, eLight, modLight i decided to develop a specific shield.
