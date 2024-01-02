@@ -1,4 +1,5 @@
-# AVR-IBus<br>`DIY Modul for BMW Cars with I-/K-Bus`
+# AVR-IBus <br> `DIY Modul for BMW Cars with I-/K-Bus`
+<img src="Pics/logo.png" border="0" height="60">
 ## Kickstart Description
 In case of using the Raspberry in the car, there was a topic about the powersuply and long bootup time.
 Inspired by other Interfaces like pibus, Intravee, eLight, modLight i decided to develop a specific shield.
@@ -6,13 +7,12 @@ After some time and some requestes the standalone modul was born.
 
 ## Modes
 - **AVR Mode** 
-	- Raspberry Shield or standalone modul with GUI for OEM System
+	- Raspberry Shield or standalone Modul with GUI for OEM System
 	- Using OSMC or LibreElec with the Addon [IBusCommunicator](https://www.bmwraspcontrol.de/board/showthread.php?tid=295) for Kodi
 - **IBus Interface Mode** 
 	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
 	- upload the other Firmware to get it working
-	- because my project is one of the pioneers for [I-BUS App](www.ibus-app.de) to develop their own next IBus Modul
-	- hope i will get more Support for the functionality with the App
+	- because my project is one of the pioneers for [I-BUS App](www.ibus-app.de) to develop their own IBus Modul	
 
 ## Features
 - CD-Changer Emulation
@@ -61,13 +61,14 @@ After some time and some requestes the standalone modul was born.
   <br><img src="Pics/Basic/00_Basic.jpg" width="350"> <img src="Pics/Basic/02_Basic.jpg" width="350"><br>
 
 ## Next Steps / ToDo
-- Extension for Bluetooth A2DP Audio Streaming (only for Basic)
-- finish Android App for Configuration
-- Request RLS for Welcome/Leaving
-- may modify RCam-Control for other Solutions (e.g. Coolant Thermostat)
+- finish Android App for Configuration	![40%](https://progress-bar.dev/40)
+- Extension for Bluetooth A2DP Audio Streaming (only for Basic) ![30%](https://progress-bar.dev/30)
+- Request RLS for Welcome/Leaving ![0%](https://progress-bar.dev/00)
+- may modify RCam-Control for other Solutions (e.g. Coolant Thermostat) ![50%](https://progress-bar.dev/50)
+- Features like LinBusBox/IBusBox ![20%](https://progress-bar.dev/20)
 - Feature Requests:
 	- Move down Mirror for Parking
-	- Features like LinBusBox/IBusBox
+	- CAN-Bus Extension
 
 
 ## Simple Basic Schematics
