@@ -23,6 +23,7 @@ After some time and some requestes the standalone modul was born.
 	- Leaving
 	- Follow Home
 	- Flash2Pass
+	- use google Sheet to define your light sequenzes [AVR-IBus Light Sequenzes](https://docs.google.com/spreadsheets/d/1VgYygLL8okBzudz64nJxUdoPSY1nirYh8i4vXntcNJs/edit?usp=sharing)
 - Mirror Folding
 	- unfold/fold for Welcome/Leaving
 	- fold Mirrors by Ingintion Position Off * 
