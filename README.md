@@ -1,4 +1,4 @@
-<center><img src="Pics/logo.png" border="0" height="150"></center>
+<center><img src="Pics/logo.png" border="0" height="150"></img></center><br>
 # AVR-IBus <br> `DIY Modul for BMW Cars with I-/K-Bus`
 
 ## Kickstart Description 
