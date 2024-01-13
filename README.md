@@ -1,19 +1,19 @@
+<center><img src="Pics/logo.png" border="0" height="150"></center>
 # AVR-IBus <br> `DIY Modul for BMW Cars with I-/K-Bus`
-<img src="Pics/logo.png" border="0" height="60">
-<br>
-## Kickstart Description
+
+## Kickstart Description 
 In case of using the Raspberry in the car, there was a topic about the powersuply and long bootup time.
 Inspired by other Interfaces like pibus, Intravee, eLight, modLight i decided to develop a specific shield.
-After some time and some requestes the standalone modul was born.
+After some time and some requestes the standalone Modul was born. 
 
 ## Modes
 - **AVR Mode** 
 	- Raspberry Shield or standalone Modul with GUI for OEM System
 	- Using OSMC or LibreElec with the Addon [IBusCommunicator](https://www.bmwraspcontrol.de/board/showthread.php?tid=295) for Kodi
 - **IBus Interface Mode** 
-	- you can use this DIY Modul as usual USB IBus-Interface also (e.g. for Android Radio Headunits)
-	- upload the other Firmware to get it working
-	- because my project is one of the pioneers for [I-BUS App](www.ibus-app.de) to develop their own IBus Modul	
+	- you can use this DIY Modul as usual USB IBus-Interface also 
+	(e.g. for Android Radio Headunits with [I-BUS App](www.ibus-app.de))
+	- upload the other Firmware to get it working 
 
 ## Features
 - CD-Changer Emulation
